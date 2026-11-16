@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.poo.monederovirtual.viewController.MonederoViewController">
+    <top>
+        <VBox styleClass="header" spacing="10">
+            <Label text="🌸 Monedero Kawaii 🌸" styleClass="titulo"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Cliente" styleClass="etiqueta-header"/>
+                <ComboBox fx:id="cbCliente" prefWidth="210"/>
+                <Button text="＋ Cliente" styleClass="boton-secundario" onAction="#onNuevoCliente"/>
+                <Label text="Monedero" styleClass="etiqueta-header"/>
+                <ComboBox fx:id="cbMonedero" prefWidth="190"/>
+                <Button text="＋ Monedero" styleClass="boton-secundario" onAction="#onNuevoMonedero"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <VBox styleClass="saldo-card" alignment="CENTER">
+                    <Label text="Saldo 💰" styleClass="saldo-titulo"/>
+                    <Label fx:id="lblSaldo" text="—" styleClass="saldo-valor"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+            <padding><Insets top="14" right="18" bottom="6" left="18"/></padding>
+
+            <Tab text="💸 Operaciones">
+                <VBox spacing="16">
+                    <padding><Insets top="18"/></padding>
+                    <VBox styleClass="card" spacing="10">
+                        <Label text="Depositar o retirar ✨" styleClass="subtitulo"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="txtMonto" promptText="Monto"/>
+                            <Button text="Depositar 💖" onAction="#onDepositar"/>
+                            <Button text="Retirar 🌷" styleClass="boton-secundario" onAction="#onRetirar"/>
+                        </HBox>
+                    </VBox>
+                    <VBox styleClass="card" spacing="10">
+                        <Label text="Transferir 💌" styleClass="subtitulo"/>
+                        <HBox spacing="10">
+                            <ComboBox fx:id="cbDestinoCliente" promptText="Cliente destino" prefWidth="210"/>
+                            <ComboBox fx:id="cbDestinoMonedero" promptText="Monedero destino" prefWidth="190"/>
+                            <TextField fx:id="txtMontoTransf" promptText="Monto"/>
+                            <Button text="Transferir" onAction="#onTransferir"/>
+                        </HBox>
+                        <Label text="Las transferencias tienen una comisión del 2%." styleClass="nota"/>
+                    </VBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="📜 Historial">
+                <VBox spacing="12">
+                    <padding><Insets top="18"/></padding>
+                    <TableView fx:id="tblHistorial" VBox.vgrow="ALWAYS"/>
+                    <HBox><Button text="Revertir la seleccionada 🌈" onAction="#onRevertir"/></HBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="🎀 Puntos">
+                <VBox spacing="14">
+                    <padding><Insets top="18"/></padding>
+                    <HBox spacing="16">
+                        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                            <Label text="Puntos acumulados" styleClass="nota"/>
+                            <Label fx:id="lblPuntos" styleClass="saldo-valor-grande"/>
+                        </VBox>
+                        <VBox styleClass="card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                            <Label text="Tu rango" styleClass="nota"/>
+                            <Label fx:id="lblRango" styleClass="saldo-valor-grande"/>
+                        </VBox>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Button text="100 pts · 10% menos comisión" onAction="#onCanjeComision"/>
+                        <Button text="500 pts · Mes sin cargos en retiros" onAction="#onCanjeRetiros"/>
+                        <Button text="1000 pts · Bono de 50 💰" onAction="#onCanjeBono"/>
+                    </HBox>
+                    <HBox spacing="14" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="tblPuntos" HBox.hgrow="ALWAYS"/>
+                        <ListView fx:id="lvBeneficios" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="⏰ Programadas">
+                <VBox spacing="12">
+                    <padding><Insets top="18"/></padding>
+                    <VBox styleClass="card" spacing="10">
+                        <FlowPane hgap="10" vgap="10">
+                            <ComboBox fx:id="cbTipoProg" prefWidth="140"/>
+                            <TextField fx:id="txtMontoProg" promptText="Monto" prefWidth="110"/>
+                            <DatePicker fx:id="dpFecha" prefWidth="140"/>
+                            <TextField fx:id="txtHora" promptText="HH:mm" prefWidth="80"/>
+                            <ComboBox fx:id="cbFrecuencia" prefWidth="130"/>
+                            <ComboBox fx:id="cbDestinoClienteProg" promptText="Cliente destino" prefWidth="190"/>
+                            <ComboBox fx:id="cbDestinoMonederoProg" promptText="Monedero destino" prefWidth="170"/>
+                            <Button text="Programar 🎀" onAction="#onProgramar"/>
+                        </FlowPane>
+                        <Label text="Para una transferencia programada elige también el destino." styleClass="nota"/>
+                    </VBox>
+                    <TableView fx:id="tblProgramadas" VBox.vgrow="ALWAYS"/>
+                    <HBox spacing="10">
+                        <Button text="Procesar vencidas 🚀" onAction="#onProcesarProgramadas"/>
+                        <Button text="Revisar recordatorios 🔔" styleClass="boton-secundario" onAction="#onRecordatorios"/>
+                        <Button text="Cancelar la seleccionada" styleClass="boton-secundario" onAction="#onCancelarProgramada"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab text="📊 Análisis y alertas">
+                <VBox spacing="12">
+                    <padding><Insets top="18"/></padding>
+                    <HBox spacing="14" prefHeight="290">
+                        <TextArea fx:id="txtAnalisis" editable="false" HBox.hgrow="ALWAYS"/>
+                        <PieChart fx:id="pcGastos" title="Gastos por tipo" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Label text="Alertas 🔔" styleClass="subtitulo"/>
+                    <ListView fx:id="lvAlertas" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <Label fx:id="lblEstado" styleClass="estado" maxWidth="Infinity" text="(◕‿◕✿) ¡Bienvenida!"/>
+    </bottom>
+</BorderPane>

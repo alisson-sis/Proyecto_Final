@@ -1,0 +1,76 @@
+.root {
+    -fx-font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+    -fx-font-size: 14px;
+    -fx-base: #ffd9ea;
+    -fx-background: #fff0f6;
+    -fx-background-color: #fff0f6;
+    -fx-text-fill: #7a3355;
+    -fx-accent: #ff7fb2;
+    -fx-focus-color: #ff7fb2;
+    -fx-faint-focus-color: transparent;
+}
+.label { -fx-text-fill: #7a3355; }
+
+.header {
+    -fx-background-color: linear-gradient(to right, #ffb3d1, #ffc7de 60%, #ffdcec);
+    -fx-padding: 14 22 18 22;
+    -fx-background-radius: 0 0 30 30;
+    -fx-effect: dropshadow(gaussian, rgba(255,111,168,0.40), 16, 0.2, 0, 4);
+}
+.titulo { -fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #ff6fa8, 5, 0.7, 0, 1); }
+.etiqueta-header { -fx-text-fill: #8f2f5c; -fx-font-weight: bold; }
+.subtitulo { -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #c2477f; }
+.nota { -fx-text-fill: #b0708d; -fx-font-size: 12px; }
+
+.saldo-card { -fx-background-color: white; -fx-background-radius: 22; -fx-padding: 6 22;
+    -fx-effect: dropshadow(gaussian, rgba(255,111,168,0.35), 10, 0.2, 0, 3); }
+.saldo-titulo { -fx-font-size: 12px; -fx-text-fill: #b0708d; }
+.saldo-valor { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #e0407f; }
+.saldo-valor-grande { -fx-font-size: 34px; -fx-font-weight: bold; -fx-text-fill: #e0407f; }
+
+.card { -fx-background-color: white; -fx-background-radius: 24; -fx-padding: 16 20;
+    -fx-border-color: #ffc2dc; -fx-border-radius: 24; -fx-border-width: 2; -fx-border-style: dashed;
+    -fx-effect: dropshadow(gaussian, rgba(255,111,168,0.18), 10, 0.1, 0, 3); }
+
+.button { -fx-background-color: linear-gradient(#ff9cc6, #ff74ad); -fx-text-fill: white;
+    -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 18; -fx-cursor: hand; }
+.button:hover { -fx-background-color: linear-gradient(#ffb0d2, #ff5f9f); }
+.button:pressed { -fx-background-color: #f0508f; }
+.boton-secundario { -fx-background-color: white; -fx-text-fill: #d63d82;
+    -fx-border-color: #ff9cc6; -fx-border-width: 2; -fx-border-radius: 20; }
+.boton-secundario:hover { -fx-background-color: #ffe3ef; }
+
+.text-field, .text-area, .combo-box-base, .date-picker .text-field {
+    -fx-background-color: white; -fx-background-radius: 16;
+    -fx-border-color: #ffb3d1; -fx-border-radius: 16; }
+.text-area .content { -fx-background-color: white; -fx-background-radius: 16; }
+.text-field:focused, .combo-box-base:focused { -fx-border-color: #ff5f9f; }
+.combo-box-popup .list-view { -fx-background-color: white; -fx-border-color: #ffb3d1; }
+.list-cell:filled:hover, .list-cell:filled:selected { -fx-background-color: #ffd6e8; -fx-text-fill: #7a3355; }
+
+.tab-pane > .tab-header-area > .tab-header-background { -fx-background-color: transparent; }
+.tab-pane > .tab-header-area { -fx-padding: 0; }
+.tab { -fx-background-color: #ffd6e8; -fx-background-radius: 16 16 0 0; -fx-padding: 4 10; }
+.tab:selected { -fx-background-color: #ff8fbf; }
+.tab .tab-label { -fx-text-fill: #a03a6a; -fx-font-weight: bold; }
+.tab:selected .tab-label { -fx-text-fill: white; }
+.tab-pane > .tab-content-area { -fx-background-color: transparent; }
+
+.table-view, .list-view { -fx-background-color: white; -fx-background-radius: 18;
+    -fx-border-color: #ffc2dc; -fx-border-radius: 18; -fx-border-width: 2; }
+.table-view .column-header-background { -fx-background-color: #ffc2dc; -fx-background-radius: 16 16 0 0; }
+.table-view .column-header, .table-view .filler { -fx-background-color: transparent; }
+.table-view .column-header .label { -fx-text-fill: #8f2f5c; -fx-font-weight: bold; }
+.table-row-cell { -fx-background-color: white; }
+.table-row-cell:odd { -fx-background-color: #fff6fa; }
+.table-row-cell:selected { -fx-background-color: #ffd0e5; }
+.table-row-cell:selected .text { -fx-fill: #7a3355; }
+
+.estado { -fx-padding: 8 22; -fx-background-color: #ffe3ef; -fx-font-weight: bold; }
+.estado-ok { -fx-text-fill: #3f9a6b; }
+.estado-error { -fx-text-fill: #d12f6a; }
+
+.dialog-pane { -fx-background-color: #fff0f6; }
+.dialog-pane > .header-panel { -fx-background-color: #ffc2dc; }
+.dialog-pane > .header-panel .label { -fx-text-fill: #8f2f5c; -fx-font-weight: bold; }
